@@ -52,5 +52,38 @@ def delete(id):
     conn.commit()
     return 'Pelicula eliminada con exito'
 
+
+# creo una ruta para la pagina de edicion de peliculas
+@app.route('/edit/<id>')
+def edit(id):
+
+    sql = "SELECT * FROM `movies_db`.`movies` WHERE `id` = " + id + ";"
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute(sql)
+    data_movie = cursor.fetchone()
+    conn.commit()
+
+    return render_template('movies/edit.html', movie=data_movie)
+
+# creo una ruta para la pagina de edicion de peliculas
+@app.route('/update', methods=['POST'])
+def update():
+
+    _id = request.form['movie_id']
+    _name = request.form['name']
+    _rating = request.form['rating']
+    _awards = request.form['awards']
+    _length = request.form['length']
+    _genre_id = request.form['genre_id']
+
+    sql = "UPDATE `movies_db`.`movies` SET `updated_at` = sysdate(), `title` = '" + _name + "', `rating` = " + _rating + ", `awards` = " + _awards + ", `length` = " + _length + ", `genre_id` = " + _genre_id + " WHERE (`id` = " + _id + ");"
+
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute(sql)
+    conn.commit()
+
+    return 'Pelicula actualizada con exito'
 if __name__ == '__main__':
     app.run(debug=True)  
