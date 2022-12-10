@@ -53,7 +53,7 @@ def delete(id):
     return 'Pelicula eliminada con exito'
 
 
-# creo una ruta para la pagina de edicion de peliculas
+
 @app.route('/edit/<id>')
 def edit(id):
 
@@ -66,7 +66,7 @@ def edit(id):
 
     return render_template('movies/edit.html', movie=data_movie)
 
-# creo una ruta para la pagina de edicion de peliculas
+
 @app.route('/update', methods=['POST'])
 def update():
 
