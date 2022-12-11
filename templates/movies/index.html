@@ -1,43 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <title>Document</title>
 </head>
+
 <body>
-    <h1>Listado de Peliculas</h1>
-    <a href="/create">Crear Pelicula</a>
-    <table class="table table-light">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Rating</th>
-                <th>Premios</th>
-                <th>Duracion</th>
-                <th>Genero</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-    
-        <tbody>
-            {% for movie in movies %} <!--Esto es un for para recorrer el array de peliculas FOR de jinja2  -->
-            <tr>
-                <td>{{ movie[0] }}</td>
-                <td>{{ movie[3] }}</td>
-                <td>{{ movie[4] }}</td>
-                <td>{{ movie[5] }}</td>
-                <td>{{ movie[7] }}</td>
-                <td>{{ movie[8] }}</td>
-                <td>
-                    <a href="/edit/{{ movie[0] }}">Editar</a>
-                    <a href="/delete/{{ movie[0] }}">Eliminar</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+
+        <h1>Listado de Peliculas</h1>
+        <a href="/create" class="btn btn-danger">Crear Pelicula</a>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Rating</th>
+                    <th>Premios</th>
+                    <th>Duracion</th>
+                    <th>Genero</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for movie in movies %} <!--Esto es un for para recorrer el array de peliculas FOR de jinja2  -->
+                <tr>
+                    <td>{{ movie[0] }}</td>
+                    <td>{{ movie[3] }}</td>
+                    <td>{{ movie[4] }}</td>
+                    <td>{{ movie[5] }}</td>
+                    <td>{{ movie[7] }}</td>
+                    <td>{{ movie[8] }}</td>
+                    <td>
+                        <a href="/edit/ {{ movie[0] }}" class="btn btn-info">Editar</a>
+                        <a href="/delete/{{ movie[0] }}" class="btn btn-info">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
+
 </html>
